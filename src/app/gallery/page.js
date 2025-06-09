@@ -164,7 +164,7 @@ export default function Gallery() {
                   </div>
                   
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                     <div className="transform scale-0 group-hover:scale-100 transition-transform duration-300">
                       <div className="bg-white rounded-full p-3 shadow-lg">
                         <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -199,7 +199,7 @@ export default function Gallery() {
 
       {/* Modal */}
       {selectedImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4" onClick={closeModal}>
+        <div className="fixed inset-0 bg-opacity-90 z-50 flex items-center justify-center p-4" onClick={closeModal}>
           <div className="relative max-w-4xl max-h-full" onClick={(e) => e.stopPropagation()}>
             {/* Close Button */}
             <button
