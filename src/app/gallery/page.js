@@ -155,13 +155,6 @@ export default function Gallery() {
                       <p className="text-xs text-green-600 capitalize">{image.category}</p>
                     </div>
                   </div>
-                  <div className="absolute top-2 right-2">
-                    <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
-                      image.type === 'jpg' ? 'bg-blue-100/80 text-blue-800' : 'bg-purple-100/80 text-purple-800'
-                    }`}>
-                      {image.type.toUpperCase()}
-                    </span>
-                  </div>
                   
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
