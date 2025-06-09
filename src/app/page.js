@@ -1,63 +1,14 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import ClientHeader from './components/header';
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-green-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-lg sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <h1 className="text-2xl font-bold text-green-700">LUQI HARVEST</h1>
-              </div>
-            </div>
-            
-            {/* Desktop Menu */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#home" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                <Link href="/gallery" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Gallery</Link>
-                <a href="#products" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Products</a>
-                <a href="#about" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About Us</a>
-                <a href="#certification" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Certification</a>
-                <a href="#contact" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
-              </div>
-            </div>
-            
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-green-700 hover:text-yellow-600 focus:outline-none focus:text-yellow-600"
-              >
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-              <a href="#home" className="text-green-700 hover:text-yellow-600 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-              <Link href="/gallery" className="text-green-700 hover:text-yellow-600 block px-3 py-2 rounded-md text-base font-medium">Gallery</Link>
-              <a href="#products" className="text-green-700 hover:text-yellow-600 block px-3 py-2 rounded-md text-base font-medium">Products</a>
-              <a href="#about" className="text-green-700 hover:text-yellow-600 block px-3 py-2 rounded-md text-base font-medium">About Us</a>
-              <a href="#certification" className="text-green-700 hover:text-yellow-600 block px-3 py-2 rounded-md text-base font-medium">Certification</a>
-              <a href="#contact" className="text-green-700 hover:text-yellow-600 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
-            </div>
-          </div>
-        )}
-      </nav>
+      <ClientHeader />
 
       {/* Hero Section */}
       <section id="home" className="relative overflow-hidden">
@@ -71,9 +22,9 @@ export default function Home() {
                 LUQI HARVEST is a Bangalore and Krishnagiri-based company that produces, trades and exports high-quality, natural fruit pulp worldwide. Sourced from the finest farms in India.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-semibold transition-colors shadow-lg">
+                <Link href="/products" className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-semibold transition-colors shadow-lg inline-block text-center">
                   Explore Products
-                </button>
+                </Link>
                 <button className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 rounded-full font-semibold transition-colors">
                   Contact Us
                 </button>
@@ -140,59 +91,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Highlights */}
+      {/* Products Link Section */}
       <section className="py-20 bg-gradient-to-br from-yellow-50 to-green-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Our Premium Products</h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Discover Our Premium Products</h2>
             <p className="text-lg text-green-600 max-w-2xl mx-auto">Rich in vitamins A, C and E for your healthy lifestyle</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                  <span className="text-3xl">👑</span>
-                </div>
-                <h3 className="text-2xl font-bold text-green-800 mb-4">Alphonso Mango</h3>
-                <p className="text-green-600 mb-6">The King of Mangoes - Premium quality with rich, creamy texture and unparalleled sweetness</p>
-                <ul className="text-sm text-green-600 space-y-2">
-                  <li>• Rich in Vitamins A, C, and E</li>
-                  <li>• High in Antioxidants</li>
-                  <li>• Perfect for beverages & desserts</li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-green-400 to-yellow-500 rounded-full flex items-center justify-center">
-                  <span className="text-3xl">🥭</span>
-                </div>
-                <h3 className="text-2xl font-bold text-green-800 mb-4">Totapuri Mango</h3>
-                <p className="text-green-600 mb-6">Vibrant yellow color with distinct tangy taste, perfect balance of sweet and sour flavor</p>
-                <ul className="text-sm text-green-600 space-y-2">
-                  <li>• High in Antioxidants</li>
-                  <li>• Good Source of Fiber</li>
-                  <li>• Ideal for juices & smoothies</li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-orange-400 to-yellow-500 rounded-full flex items-center justify-center">
-                  <span className="text-3xl">🌟</span>
-                </div>
-                <h3 className="text-2xl font-bold text-green-800 mb-4">Kesar Mango</h3>
-                <p className="text-green-600 mb-6">Saffron-like color and fragrant aroma with sweet flavor and pulpy texture</p>
-                <ul className="text-sm text-green-600 space-y-2">
-                  <li>• Vitamin C Rich</li>
-                  <li>• Natural Energy Booster</li>
-                  <li>• Perfect for ice creams</li>
-                </ul>
-              </div>
-            </div>
+          <div className="flex justify-center">
+            <Link href="/products" className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-semibold transition-colors shadow-lg inline-block text-center">
+              View All Products
+            </Link>
           </div>
         </div>
       </section>
@@ -210,9 +120,9 @@ export default function Home() {
             <button className="bg-white text-green-600 hover:bg-green-50 px-8 py-3 rounded-full font-semibold transition-colors shadow-lg">
               Get Quote
             </button>
-            <button className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 rounded-full font-semibold transition-colors">
+            <Link href="/products" className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 rounded-full font-semibold transition-colors inline-block text-center">
               View Products
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -231,9 +141,11 @@ export default function Home() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-green-200">
-                <li><a href="#home" className="hover:text-yellow-400 transition-colors">Home</a></li>
-                <li><a href="#products" className="hover:text-yellow-400 transition-colors">Products</a></li>
+                <li><Link href="/" className="hover:text-yellow-400 transition-colors">Home</Link></li>
+                <li><Link href="/gallery" className="hover:text-yellow-400 transition-colors">Gallery</Link></li>
+                <li><Link href="/products" className="hover:text-yellow-400 transition-colors">Products</Link></li>
                 <li><a href="#about" className="hover:text-yellow-400 transition-colors">About Us</a></li>
+                <li><a href="#certification" className="hover:text-yellow-400 transition-colors">Certification</a></li>
                 <li><a href="#contact" className="hover:text-yellow-400 transition-colors">Contact</a></li>
               </ul>
             </div>

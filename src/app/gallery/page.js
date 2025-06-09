@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ClientHeader from '../components/header';
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -81,28 +82,7 @@ export default function Gallery() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-green-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-lg sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/" className="flex-shrink-0">
-                <h1 className="text-2xl font-bold text-green-700 hover:text-yellow-600 transition-colors">LUQI HARVEST</h1>
-              </Link>
-            </div>
-            
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link href="/" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</Link>
-                <Link href="/gallery" className="text-yellow-600 bg-yellow-50 px-3 py-2 rounded-md text-sm font-medium">Gallery</Link>
-                <a href="#products" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Products</a>
-                <a href="#about" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About Us</a>
-                <a href="#certification" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Certification</a>
-                <a href="#contact" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <ClientHeader />
 
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-r from-green-600 to-yellow-500">
@@ -316,6 +296,7 @@ export default function Gallery() {
                 <li><Link href="/gallery" className="hover:text-yellow-400 transition-colors">Gallery</Link></li>
                 <li><a href="#products" className="hover:text-yellow-400 transition-colors">Products</a></li>
                 <li><a href="#about" className="hover:text-yellow-400 transition-colors">About Us</a></li>
+                <li><a href="#certification" className="hover:text-yellow-400 transition-colors">Certification</a></li>
                 <li><a href="#contact" className="hover:text-yellow-400 transition-colors">Contact</a></li>
               </ul>
             </div>
