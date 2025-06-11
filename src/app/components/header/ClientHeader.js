@@ -38,9 +38,24 @@ export default function ClientHeader() {
               >
                 Products
               </Link>
-              <a href="#about" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About Us</a>
-              <a href="#certification" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Certification</a>
-              <a href="#contact" className="text-green-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+              <Link 
+                href="/about" 
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === '/about' ? 'text-yellow-600 bg-yellow-50' : 'text-green-700 hover:text-yellow-600'}`}
+              >
+                About Us
+              </Link>
+              <Link
+                  href="/certification"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === '/certification' ? 'text-yellow-600 bg-yellow-50' : 'text-green-700 hover:text-yellow-600'}`}
+                >
+                  Certification
+                </Link>
+              <Link 
+                href="/contact" 
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === '/contact' ? 'text-yellow-600 bg-yellow-50' : 'text-green-700 hover:text-yellow-600'}`}
+              >
+                Contact
+              </Link>
             </div>
           </div>
           
@@ -80,9 +95,25 @@ export default function ClientHeader() {
             >
               Products
             </Link>
-            <a href="#about" className="block px-3 py-2 rounded-md text-base font-medium text-green-700 hover:text-yellow-600 hover:bg-yellow-50">About Us</a>
-            <a href="#certification" className="block px-3 py-2 rounded-md text-base font-medium text-green-700 hover:text-yellow-600 hover:bg-yellow-50">Certification</a>
-            <a href="#contact" className="block px-3 py-2 rounded-md text-base font-medium text-green-700 hover:text-yellow-600 hover:bg-yellow-50">Contact</a>
+            <Link 
+              href="/about" 
+              className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === '/about' ? 'text-yellow-600 bg-yellow-50' : 'text-green-700 hover:text-yellow-600 hover:bg-yellow-50'}`}
+            >
+              About Us
+            </Link>
+            <Link
+                href="/certification"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === '/certification' ? 'text-yellow-600 bg-yellow-50' : 'text-green-700 hover:text-yellow-600 hover:bg-yellow-50'}`}
+                onClick={() => setIsOpen(false)}
+              >
+                Certification
+              </Link>
+            <Link 
+              href="/contact" 
+              className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === '/contact' ? 'text-yellow-600 bg-yellow-50' : 'text-green-700 hover:text-yellow-600 hover:bg-yellow-50'}`}
+            >
+              Contact
+            </Link>
           </div>
         </div>
       )}
