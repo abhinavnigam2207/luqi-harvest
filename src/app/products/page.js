@@ -1,11 +1,13 @@
 'use client';
+import { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import ClientHeader from '../components/header';
 import { categories, products, heroBadges } from './constants';
 
-export default function Products() {
+// Client Component
+function ProductsContent() {
   const searchParams = useSearchParams();
   const selectedCategory = searchParams.get('category') || 'all';
 
@@ -203,5 +205,21 @@ export default function Products() {
         </div>
       </footer>
     </div>
+  );
+}
+
+// Server Component
+export default function Products() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-green-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-green-800 text-lg">Loading products...</p>
+        </div>
+      </div>
+    }>
+      <ProductsContent />
+    </Suspense>
   );
 }
