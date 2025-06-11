@@ -1,10 +1,17 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import ClientHeader from '../components/header';
 import { categories, products, heroBadges } from './constants';
 
 export default function Products() {
+  const searchParams = useSearchParams();
+  const selectedCategory = searchParams.get('category') || 'all';
+
+  const filteredProducts = selectedCategory === 'all' 
+    ? products 
+    : products.filter(product => product.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-green-50">
@@ -34,13 +41,16 @@ export default function Products() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category) => (
-              <button
+              <Link
                 key={category.id}
+                href={`/products?category=${category.id}`}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 
-                  bg-gray-100 text-green-700 hover:bg-yellow-100 hover:text-yellow-700`}
+                  ${selectedCategory === category.id 
+                    ? 'bg-yellow-500 text-white' 
+                    : 'bg-gray-100 text-green-700 hover:bg-yellow-100 hover:text-yellow-700'}`}
               >
                 {category.name}
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -49,71 +59,78 @@ export default function Products() {
       {/* Products Grid */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow overflow-hidden group"
-              >
-                <div className="aspect-square relative overflow-hidden rounded-xl mb-6">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority
-                    loading="eager"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-100 to-green-100 flex items-center justify-center shadow-inner" style={{display: 'none'}}>
-                    <div className="text-center p-4">
-                      <div className="w-20 h-20 mx-auto mb-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-                        <span className="text-3xl">🥭</span>
-                      </div>
-                      <h3 className="text-base font-semibold text-green-800 mb-1">{product.name}</h3>
-                      <p className="text-sm text-green-600 capitalize font-medium">{product.subcategory}</p>
-                      <div className="mt-2 px-3 py-1 bg-green-100 rounded-full inline-block">
-                        <span className="text-xs text-green-700">Premium Quality</span>
+          {filteredProducts.length === 0 ? (
+            <div className="text-center py-12">
+              <h3 className="text-2xl font-bold text-green-800 mb-4">No products found</h3>
+              <p className="text-green-600">Please try a different category</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProducts.map((product) => (
+                <div
+                  key={product.id}
+                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow overflow-hidden group"
+                >
+                  <div className="aspect-square relative overflow-hidden rounded-xl mb-6">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority
+                      loading="eager"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-100 to-green-100 flex items-center justify-center shadow-inner" style={{display: 'none'}}>
+                      <div className="text-center p-4">
+                        <div className="w-20 h-20 mx-auto mb-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                          <span className="text-3xl">🥭</span>
+                        </div>
+                        <h3 className="text-base font-semibold text-green-800 mb-1">{product.name}</h3>
+                        <p className="text-sm text-green-600 capitalize font-medium">{product.subcategory}</p>
+                        <div className="mt-2 px-3 py-1 bg-green-100 rounded-full inline-block">
+                          <span className="text-xs text-green-700">Premium Quality</span>
+                        </div>
                       </div>
                     </div>
+                    <div className="absolute top-2 right-2">
+                      <span className="inline-block px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-green-100/80 text-green-800">
+                        {product.subcategory.toUpperCase()}
+                      </span>
+                    </div>
                   </div>
-                  <div className="absolute top-2 right-2">
-                    <span className="inline-block px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-green-100/80 text-green-800">
-                      {product.subcategory.toUpperCase()}
-                    </span>
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-green-800 mb-4 group-hover:text-yellow-600 transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-green-600 mb-6">{product.description}</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="text-lg font-semibold text-green-800 mb-2">Benefits</h4>
+                        <ul className="text-sm text-green-600 space-y-2">
+                          {product.benefits.map((benefit, index) => (
+                            <li key={index}>• {benefit}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-green-800 mb-2">Applications</h4>
+                        <ul className="text-sm text-green-600 space-y-2">
+                          {product.applications.map((application, index) => (
+                            <li key={index}>• {application}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-green-800 mb-4 group-hover:text-yellow-600 transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-green-600 mb-6">{product.description}</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="text-lg font-semibold text-green-800 mb-2">Benefits</h4>
-                      <ul className="text-sm text-green-600 space-y-2">
-                        {product.benefits.map((benefit, index) => (
-                          <li key={index}>• {benefit}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-green-800 mb-2">Applications</h4>
-                      <ul className="text-sm text-green-600 space-y-2">
-                        {product.applications.map((application, index) => (
-                          <li key={index}>• {application}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

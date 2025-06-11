@@ -1,7 +1,7 @@
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import ClientHeader from './components/header';
+import BannerCarousel from './components/carousel/BannerCarousel';
 
 export default function Home() {
 
@@ -9,6 +9,9 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-green-50">
       {/* Navigation */}
       <ClientHeader />
+
+      {/* Banner Carousel */}
+      <BannerCarousel />
 
       {/* Hero Section */}
       <section id="home" className="relative overflow-hidden">
