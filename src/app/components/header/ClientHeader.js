@@ -35,7 +35,7 @@ export default function ClientHeader() {
               {/* {!imageError ? ( */}
                 <div className="relative h-12 w-32">
                   <Image
-                    src="/assets/jpg/LUQR.jpg"
+                    src="/assets/png/luqr.png"
                     alt="LUQI HARVEST"
                     fill
                     className="object-contain"
