@@ -87,17 +87,16 @@ export default function Gallery() {
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-r from-green-600 to-yellow-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Product Gallery
-          </h1>
-          <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
-            Explore our premium collection of mango products, from fresh harvest to processed pulp. 
-            Witness the journey of quality from farm to your table.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            <span className="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full text-sm">Premium Quality</span>
-            <span className="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full text-sm">100% Natural</span>
-            <span className="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full text-sm">Export Grade</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+              Product Gallery
+            </h1>
+            <p className="text-xl text-green-100 mb-10 max-w-3xl mx-auto leading-relaxed font-light">
+              Explore our premium collection of mango products, from fresh harvest to processed pulp. Witness the journey of quality from farm to your table.
+            </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <span className="bg-gradient-to-r from-green-800 via-yellow-600 to-green-700 text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 cursor-default">Premium Quality</span>
+            <span className="bg-gradient-to-r from-green-800 via-yellow-600 to-green-700 text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 cursor-default">100% Natural</span>
+            <span className="bg-gradient-to-r from-green-800 via-yellow-600 to-green-700 text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 cursor-default">Export Grade</span>
           </div>
         </div>
       </section>

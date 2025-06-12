@@ -30,9 +30,9 @@ function ProductsContent() {
             Explore our range of high-quality fruit products, from fresh pulp to concentrates.
             100% natural with no preservatives added.
           </p>
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap justify-center gap-3">
             {heroBadges.map((badge, index) => (
-              <span key={index} className="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full text-sm">{badge}</span>
+              <span key={index} className="bg-gradient-to-r from-green-800 via-yellow-600 to-green-700 text-white px-6 py-2.5 rounded-full text-sm font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 cursor-default">{badge}</span>
             ))}
           </div>
         </div>
